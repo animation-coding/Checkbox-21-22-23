@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Neumorphism Button</title>
+
+<style>
+
+:root {
+  --white-color: #e8e9ec;
+  --red-color: #e74c3c;
+  --green-color: #3ce7a2;
+  --dark-shadow-color: #d1d9e6;
+  --light-shadow-color: rgba(255, 255, 255, .55);
+}
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white-color);
+}
+
+.container > div {
+  margin-right: 5em;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  background-color: var(--white-color);
+  box-shadow:
+    -8px -4px 8px 0px var(--light-shadow-color),
+    inset 8px 4px 20px 0px var(--light-shadow-color),
+    8px 4px 8px 0px var(--dark-shadow-color),
+    inset -8px -4px 20px 0 var(--dark-shadow-color);
+  transition: all 300ms ease-in-out;
+}
+
+.button.active {
+  box-shadow:
+    8px 4px 8px 0px var(--light-shadow-color),
+    inset -8px -4px 20px 0px var(--light-shadow-color),
+    -8px -4px 8px 0px var(--dark-shadow-color),
+    inset 8px 4px 20px 0 var(--dark-shadow-color);
+}
+
+.button-icon {
+  width: 3em;
+}
+
+.button-icon svg {
+  width: 100%;
+}
+
+.button.active .button-icon svg {
+  transition: all 300ms ease-in-out;
+}
+
+.button-icon svg path {
+  fill: var(--red-color);
+  transition: all 300ms ease-in-out;
+}
+
+.button.active .button-icon svg path {
+  fill: var(--green-color);
+}
+
+.neu-check {
+  cursor: pointer;
+  position: relative;
+  width: 80px;
+  height: 20px;  
+  border-radius: 50px;
+  background-color: var(--white-color);
+  box-shadow:
+    8px 4px 8px 0px var(--light-shadow-color),
+    inset -8px -4px 20px 0px var(--light-shadow-color),
+    -8px -4px 8px 0px var(--dark-shadow-color),
+    inset 8px 4px 20px 0 var(--dark-shadow-color);  
+}
+
+.neu-check::after {
+  content: "";
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background-color: var(--red-color);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: all 300ms ease-in-out;
+}
+
+.neu-check.active::after {
+  left: calc(100% - 35px);
+  background-color: var(--green-color);
+}
+
+.neu-check input {
+  display: none;
+}    
+</style>    
+</head>
+<body>
+<div class="container">
+  <div id="neu-button" class="button">
+    <div class="button-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24.303 24.303" style="enable-background:new 0 0 24.303 24.303;" xml:space="preserve" class="hovered-paths"><g><g>
+	<path d="M10.269,11.298V1.883C10.269,0.844,11.113,0,12.152,0s1.883,0.844,1.883,1.883v9.415   c0,1.039-0.844,1.883-1.883,1.883S10.269,12.337,10.269,11.298z M19.616,2.761c-0.61-0.483-1.5-0.377-1.983,0.234   c-0.483,0.612-0.378,1.5,0.234,1.984c2.24,1.767,3.524,4.413,3.524,7.261c0,5.094-4.145,9.239-9.238,9.239   c-5.094,0-9.239-4.145-9.239-9.239c0-2.847,1.283-5.492,3.521-7.258c0.612-0.483,0.717-1.371,0.234-1.984   c-0.483-0.612-1.37-0.716-1.984-0.234C1.764,5.069,0.089,8.523,0.089,12.24c0,6.652,5.412,12.063,12.063,12.063   s12.063-5.412,12.063-12.063C24.215,8.521,22.538,5.067,19.616,2.761z" data-original="#030104" class="hovered-path active-path" data-old_color="#030104"></path>
+</g></g> </svg>
+    </div>
+  </div>
+  
+    <label id="neu-check" class="neu-check" for="check">   
+      <input type="checkbox" id="check" />
+    </label>
+
+
+
+
+  <script>
+ document.getElementById("neu-button").addEventListener("click", function() {
+  this.classList.toggle("active");
+});
+
+document.querySelector("#neu-check input").addEventListener("click", function() {
+  this.parentElement.classList.toggle("active");
+});     
+  </script>  
+</div>    
+</body>
+</html>
